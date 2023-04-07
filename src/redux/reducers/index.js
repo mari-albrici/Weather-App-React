@@ -1,7 +1,14 @@
 const initialState = {
-	location: {
-		latitude: '',
-		longitude: '',
+	meteo: {
+		location: {
+			latitude: '',
+			longitude: '',
+		},
+		weather: {
+			temperature: '',
+			conditions: '',
+			wind: '',
+		},
 	},
 };
 
