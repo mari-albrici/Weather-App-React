@@ -1,33 +1,44 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { MdDeviceThermostat, MdCloud, MdSunny, MdWaterDrop, MdSevereCold, MdThunderstorm, MdWindPower } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 
-const MainWeather = (props) => {
+const MainWeather = () => {
+	const city = useSelector((state) => state.meteo.location.city);
+	const temperature = useSelector((state) => state.meteo.weather.temperature);
+	const conditions = useSelector((state) => state.meteo.weather.conditions);
+	const wind = useSelector((state) => state.meteo.weather.wind);
+
+	console.log(city);
+	console.log(temperature);
+	console.log(conditions);
+	console.log(wind);
+
 	return (
 		<>
 			<Container id="mainWeather">
-				<h3 className="text-dark">{props.city}</h3>
+				<h3 className="text-dark">{city}</h3>
 				<Container fluid>
-					{props.conditions === 'Clouds' && (
+					{conditions === 'Clouds' && (
 						<p className="weatherIcon">
 							<MdCloud />
 						</p>
 					)}
-					{props.conditions === 'Clear' && (
+					{conditions === 'Clear' && (
 						<p className="weatherIcon">
 							<MdSunny />
 						</p>
 					)}
-					{props.conditions === 'Rain' && (
+					{conditions === 'Rain' && (
 						<p className="weatherIcon">
 							<MdWaterDrop />
 						</p>
 					)}
-					{props.conditions === 'Snow' && (
+					{conditions === 'Snow' && (
 						<p className="weatherIcon">
 							<MdSevereCold />
 						</p>
 					)}
-					{props.conditions === 'Thuderstorm' && (
+					{conditions === 'Thuderstorm' && (
 						<p className="weatherIcon">
 							<MdThunderstorm />
 						</p>
@@ -36,23 +47,23 @@ const MainWeather = (props) => {
 				<Container>
 					<Row id="tempWind">
 						<Col>
-							{Math.floor(props.temperature) >= 5 && (
+							{Math.floor(temperature) >= 5 && (
 								<p className="weatherSmallIcons">
 									<MdDeviceThermostat />
 								</p>
 							)}
-							{Math.floor(props.temperature) <= 4 && (
+							{Math.floor(temperature) <= 4 && (
 								<p className="weatherSmallIcons">
 									<MdSevereCold />
 								</p>
 							)}
-							<p>{Math.floor(props.temperature)}°C</p>
+							<p>{Math.floor(temperature)}°C</p>
 						</Col>
 						<Col>
 							<p className="weatherSmallIcons">
 								<MdWindPower />{' '}
 							</p>
-							<p>{Math.floor(props.wind)}km/h</p>
+							<p>{Math.floor(wind)}km/h</p>
 						</Col>
 					</Row>
 				</Container>

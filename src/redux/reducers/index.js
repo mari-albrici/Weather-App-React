@@ -3,6 +3,7 @@ const initialState = {
 		location: {
 			latitude: '',
 			longitude: '',
+			city: '',
 		},
 		weather: {
 			temperature: '',
@@ -17,17 +18,68 @@ const mainReducer = (state = initialState, action) => {
 		case 'LATITUDE':
 			return {
 				...state,
-				location: {
-					...state.location,
-					latitude: [action.payload],
+				meteo: {
+					...state.meteo,
+					location: {
+						...state.meteo.location,
+						latitude: action.payload,
+					},
 				},
 			};
 		case 'LONGITUDE':
 			return {
 				...state,
-				location: {
-					...state.location,
-					longitude: [action.payload],
+				meteo: {
+					...state.meteo,
+					location: {
+						...state.meteo.location,
+						longitude: action.payload,
+					},
+				},
+			};
+		case 'CITY':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					location: {
+						...state.meteo.location,
+						city: action.payload,
+					},
+				},
+			};
+		case 'TEMPERATURE':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					weather: {
+						...state.weather,
+						temperature: action.payload,
+					},
+				},
+			};
+
+		case 'CONDITIONS':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					weather: {
+						...state.weather,
+						conditions: action.payload,
+					},
+				},
+			};
+		case 'WIND':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					weather: {
+						...state.weather,
+						wind: action.payload,
+					},
 				},
 			};
 		default:
