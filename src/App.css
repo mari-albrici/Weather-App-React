@@ -44,3 +44,13 @@
   padding-inline: 2rem;
   font-size: 1.2rem
 }
+
+.futureConditonsList {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 3rem;
+}
+
+.weatherIconFuture {
+  color: black;
+}
