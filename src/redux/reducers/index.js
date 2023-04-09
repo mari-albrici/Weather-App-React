@@ -10,6 +10,12 @@ const initialState = {
 			conditions: '',
 			wind: '',
 		},
+		forecast: {
+			date: '',
+			temperature: '',
+			conditions: '',
+			wind: '',
+		},
 	},
 };
 
@@ -54,19 +60,18 @@ const mainReducer = (state = initialState, action) => {
 				meteo: {
 					...state.meteo,
 					weather: {
-						...state.weather,
+						...state.meteo.weather,
 						temperature: action.payload,
 					},
 				},
 			};
-
 		case 'CONDITIONS':
 			return {
 				...state,
 				meteo: {
 					...state.meteo,
 					weather: {
-						...state.weather,
+						...state.meteo.weather,
 						conditions: action.payload,
 					},
 				},
@@ -77,7 +82,52 @@ const mainReducer = (state = initialState, action) => {
 				meteo: {
 					...state.meteo,
 					weather: {
-						...state.weather,
+						...state.meteo.weather,
+						wind: action.payload,
+					},
+				},
+			};
+
+		case 'DATE':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					forecast: {
+						...state.meteo.forecast,
+						date: action.payload,
+					},
+				},
+			};
+		case 'FORECAST_TEMPERATURE':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					forecast: {
+						...state.meteo.forecast,
+						temperature: action.payload,
+					},
+				},
+			};
+		case 'FORECAST_CONDITIONS':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					forecast: {
+						...state.meteo.forecast,
+						conditions: action.payload,
+					},
+				},
+			};
+		case 'FORECAST_WIND':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					forecast: {
+						...state.meteo.weather,
 						wind: action.payload,
 					},
 				},

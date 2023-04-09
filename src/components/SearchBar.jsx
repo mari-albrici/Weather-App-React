@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import { MdLocationOn, MdSearch } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const SearchBar = () => {
 	const [query, setQuery] = useState('');
