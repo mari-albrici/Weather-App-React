@@ -1,5 +1,9 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import { MdDeviceThermostat, MdCloud, MdSunny, MdWaterDrop, MdSevereCold, MdThunderstorm, MdWindPower } from 'react-icons/md';
+import Sun from '../assets/sun.png';
+import Cloud from '../assets/cloud.png';
+import Rain from '../assets/rain.png';
+import Snow from '../assets/snow.png';
+import Storm from '../assets/storm.png';
 import { useSelector } from 'react-redux';
 
 const MainWeather = () => {
@@ -16,53 +20,37 @@ const MainWeather = () => {
 	return (
 		<>
 			<Container id="mainWeather">
-				<h3 className="text-dark">{city}</h3>
+				<h3>{city}</h3>
 				<Container fluid>
-					{conditions === 'Clouds' && (
-						<p className="weatherIcon">
-							<MdCloud />
-						</p>
-					)}
+					{conditions === 'Clouds' && <img src={Cloud} alt="weather" className="weatherIcon" />}
 					{conditions === 'Clear' && (
 						<p className="weatherIcon">
-							<MdSunny />
+							<img src={Sun} alt="weather" className="weatherIcon" />
 						</p>
 					)}
 					{conditions === 'Rain' && (
 						<p className="weatherIcon">
-							<MdWaterDrop />
+							<img src={Rain} alt="weather" className="weatherIcon" />
 						</p>
 					)}
 					{conditions === 'Snow' && (
 						<p className="weatherIcon">
-							<MdSevereCold />
+							<img src={Snow} alt="weather" className="weatherIcon" />
 						</p>
 					)}
 					{conditions === 'Thuderstorm' && (
 						<p className="weatherIcon">
-							<MdThunderstorm />
+							<img src={Storm} alt="weather" className="weatherIcon" />
 						</p>
 					)}
 				</Container>
 				<Container>
 					<Row id="tempWind">
 						<Col>
-							{Math.floor(temperature) >= 5 && (
-								<p className="weatherSmallIcons">
-									<MdDeviceThermostat />
-								</p>
-							)}
-							{Math.floor(temperature) <= 4 && (
-								<p className="weatherSmallIcons">
-									<MdSevereCold />
-								</p>
-							)}
 							<p>{Math.floor(temperature)}°C</p>
 						</Col>
 						<Col>
-							<p className="weatherSmallIcons">
-								<MdWindPower />{' '}
-							</p>
+							<p className="weatherSmallIcons"></p>
 							<p>{Math.floor(wind)}km/h</p>
 						</Col>
 					</Row>

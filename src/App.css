@@ -1,3 +1,12 @@
+#weatherApp {
+  background-color: #DBEBFA;
+  font-family: 'Rubik', sans-serif;;
+}
+
+#offcanvasSearch {
+  background-color: #DBEBFA;
+}
+
 #searchBar {
   display:flex;
   justify-content: center;
@@ -31,7 +40,7 @@
 }
 
 #mainWeather {
-  background-color: #8FA6CB;
+  background-color: #DBEBFA;
   border-radius: 50px;
   margin-inline: 0.2rem;
   padding: 1rem;
@@ -49,8 +58,12 @@
   display: flex;
   justify-content: space-between;
   padding-inline: 3rem;
+  border: 1px solid #8FA6CB;
+  border-radius: 25px;
+  background-color: #E5FCFF;
 }
 
 .weatherIconFuture {
   color: black;
 }
+

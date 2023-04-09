@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Form, Offcanvas, Button, Container } from 'react-bootstrap';
 import { MdLocationOn, MdSearch } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
@@ -17,6 +17,7 @@ const SearchBar = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setShow(false);
 
 		try {
 			const response = await fetch(locationEndpoint);
@@ -50,14 +51,24 @@ const SearchBar = () => {
 		}
 	};
 
+	const [show, setShow] = useState(false);
+	const handleShow = () => setShow(!show);
+
 	return (
 		<>
-			<Container id="searchBar">
-				<MdLocationOn className="searchIcons" />
-				<Form onSubmit={handleSubmit} id="searchBarForm">
-					<Form.Control type="search" placeholder="Enter city" value={query} onChange={handleChange} id="searchBarInput" />
-				</Form>
-				<MdSearch className="searchIcons" />
+			<Container fluid>
+				<Button id="searchButton" onClick={handleShow}>
+					Search
+				</Button>
+				<Offcanvas show={show} id="offcanvasSearch" placement="start">
+					<Offcanvas.Body id="searchBar">
+						<MdLocationOn className="searchIcons" />
+						<Form onSubmit={handleSubmit} id="searchBarForm">
+							<Form.Control type="search" placeholder="Enter city" value={query} onChange={handleChange} id="searchBarInput" />
+						</Form>
+						<MdSearch className="searchIcons" />
+					</Offcanvas.Body>
+				</Offcanvas>
 			</Container>
 		</>
 	);

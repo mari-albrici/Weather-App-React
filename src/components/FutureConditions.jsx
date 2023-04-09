@@ -16,8 +16,6 @@ const FutureConditions = () => {
 			if (response.ok) {
 				const data = await response.json();
 				setFutureWeather(data.list);
-				console.log(futureWeather);
-				weatherDays();
 			} else {
 				alert('Error fetching future conditions data');
 			}
@@ -31,53 +29,31 @@ const FutureConditions = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [latitude, longitude]);
 
-	const weatherDays = () => {
-		futureWeather.map((i) => {
-			return {
-				date: [i].dt,
-				// temp = [i].main.temp;
-				// condition = [i].weather.main;
-				// wind = [i].wind.speed;
-			};
-		});
-	};
-
 	return (
 		<>
 			<Container>
-				<Row>
-					<ListGroup>
-						<ListGroup.Item className="futureConditonsList">
-							<Col xs={6}>
-								<p>{futureWeather.date}</p>
-							</Col>
-							{/* <Col xs={2}>
-								<p>
-									<MdDeviceThermostat />
-									{Math.floor(temp)}
-								</p>
-							</Col>
-							<Col xs={2}>
-								{condition === 'Clear' && (
-									<p className="weatherIconFuture">
-										<MdSunny />
-									</p>
-								)}
-								{condition === 'Clouds' && (
-									<p className="weatherIconFuture">
-										<MdCloud />
-									</p>
-								)}
-							</Col>
-							<Col xs={2}>
-								<p>
-									<MdWindPower />
-									{Math.floor(wind)}
-								</p>
-							</Col> */}
-						</ListGroup.Item>
-					</ListGroup>
-				</Row>
+				<ListGroup>
+					{futureWeather.map((day) => {
+						return (
+							<ListGroup.Item key={day.dt}>
+								<Row className="futureConditonsList">
+									<Col>
+										<p>{day.dt_txt}</p>
+									</Col>
+									<Col>
+										<p>{day.weather[0].description}</p>
+									</Col>
+									<Col>
+										<p>{day.weather[0].main.temp}°C</p>
+									</Col>
+									<Col>
+										<p>{day.weather[0].wind}km/h</p>
+									</Col>
+								</Row>
+							</ListGroup.Item>
+						);
+					})}
+				</ListGroup>
 			</Container>
 		</>
 	);
