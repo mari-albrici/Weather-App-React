@@ -1,10 +1,10 @@
 #weatherApp {
-  background-color: #DBEBFA;
+  background-color: #DDE3EA;
   font-family: 'Rubik', sans-serif;;
 }
 
 #offcanvasSearch {
-  background-color: #DBEBFA;
+  background-color: #DDE3EA;
 }
 
 #searchBar {
@@ -24,9 +24,36 @@
 }
 
 .weatherIcon {
-  width: 80%;
-  margin: 0;
+  width: 60%;
+  margin: 0 auto;
   color: white;
+}
+
+#cityName {
+  font-weight: 600;
+  font-size: 3.5rem;
+  margin-bottom: 0;
+}
+
+.mainTemp {
+  margin: 0;
+}
+
+#mainDivider {
+  width: 20%;
+  border: 0.5px solid lightslategrey;
+  margin-block: 3rem;
+}
+
+.mainOtherInfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: top;
+  font-size: 0.8rem;
+}
+
+.sunrise {
+  width: 50px;
 }
 
 .weatherSmallIcons {
@@ -40,27 +67,28 @@
 }
 
 #mainWeather {
-  background-color: #DBEBFA;
+  background-color: #DDE3EA;
   border-radius: 50px;
   margin-inline: 0.2rem;
   padding: 1rem;
   text-align: center;
 }
 
-#tempWind {
+#temperature {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-inline: 2rem;
-  font-size: 1.2rem
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 0;
 }
 
 .futureConditonsList {
-  display: flex;
-  justify-content: space-between;
+ 
   padding-inline: 3rem;
   border: 1px solid #8FA6CB;
   border-radius: 25px;
-  background-color: #E5FCFF;
+  background-color: #DDE3EA;
 }
 
 .weatherIconFuture {

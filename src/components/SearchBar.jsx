@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Offcanvas, Button, Container } from 'react-bootstrap';
 import { MdLocationOn, MdSearch } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SearchBar = () => {
 	const [query, setQuery] = useState('');
@@ -43,6 +43,9 @@ const SearchBar = () => {
 				dispatch({ type: 'TEMPERATURE', payload: data.main.temp });
 				dispatch({ type: 'CONDITIONS', payload: data.weather[0].main });
 				dispatch({ type: 'WIND', payload: data.wind.speed });
+				dispatch({ type: 'SUNRISE', payload: data.sys.sunrise });
+				dispatch({ type: 'SUNSET', payload: data.sys.sunset });
+				dispatch({ type: 'HUMIDITY', payload: data.main.humidity });
 			} else {
 				alert('Error fetching weather data');
 			}
@@ -50,6 +53,12 @@ const SearchBar = () => {
 			console.log(error);
 		}
 	};
+
+	const sunrise = useSelector((state) => state.meteo.weather.sunrise);
+	const sunset = useSelector((state) => state.meteo.weather.sunset);
+
+	console.log(sunrise);
+	console.log(sunset);
 
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(!show);

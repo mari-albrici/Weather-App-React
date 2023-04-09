@@ -9,6 +9,9 @@ const initialState = {
 			temperature: '',
 			conditions: '',
 			wind: '',
+			sunrise: '',
+			sunset: '',
+			humidity: '',
 		},
 		forecast: {
 			date: '',
@@ -84,6 +87,39 @@ const mainReducer = (state = initialState, action) => {
 					weather: {
 						...state.meteo.weather,
 						wind: action.payload,
+					},
+				},
+			};
+		case 'SUNRISE':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					weather: {
+						...state.meteo.weather,
+						sunrise: action.payload,
+					},
+				},
+			};
+		case 'SUNSET':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					weather: {
+						...state.meteo.weather,
+						sunset: action.payload,
+					},
+				},
+			};
+		case 'HUMIDITY':
+			return {
+				...state,
+				meteo: {
+					...state.meteo,
+					weather: {
+						...state.meteo.weather,
+						humidity: action.payload,
 					},
 				},
 			};
