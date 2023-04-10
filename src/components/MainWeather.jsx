@@ -14,24 +14,9 @@ const MainWeather = () => {
 	const temperature = useSelector((state) => state.meteo.weather.temperature);
 	const conditions = useSelector((state) => state.meteo.weather.conditions);
 	const wind = useSelector((state) => state.meteo.weather.wind);
-	const sunrise = useSelector((state) => state.meteo.weather.sunrise);
-	const sunset = useSelector((state) => state.meteo.weather.sunset);
+	const tempmax = useSelector((state) => state.meteo.weather.tempmax);
+	const tempmin = useSelector((state) => state.meteo.weather.tempmin);
 	const humidity = useSelector((state) => state.meteo.weather.humidity);
-
-	console.log(city);
-	console.log(temperature);
-	console.log(conditions);
-	console.log(wind);
-	console.log(sunrise);
-	console.log(sunset);
-
-	const sunriseHours = new Date().getHours(sunrise);
-	const sunriseMinutes = new Date().getMinutes(sunrise);
-	console.log(sunriseHours, sunriseMinutes);
-
-	const sunsetHours = new Date().getHours(sunset);
-	const sunsetMinutes = new Date().getMinutes(sunset);
-	console.log(sunsetHours, sunsetMinutes);
 
 	return (
 		<>
@@ -52,29 +37,18 @@ const MainWeather = () => {
 					</Row>
 					<hr id="mainDivider" />
 					<Row className="mainOtherInfo">
-						<Col>
+						<Col xs={4}>
 							<img src={Sunrise} alt="sunrise or sunset" className="sunrise" />
+							<p>
+								↓{Math.floor(tempmin)}°C ↑{Math.ceil(tempmax)}°C
+							</p>
 						</Col>
-						<Col>
+						<Col xs={4}>
 							<img src={Wind} alt="wind" className="sunrise" />
-						</Col>
-						<Col>
-							<img src={Humidity} alt="humidity" className="sunrise" />
-						</Col>
-					</Row>
-					<Row className="mainOtherInfo">
-						<Col>
-							<p>
-								↑ {sunriseHours}:{sunriseMinutes} {''}
-							</p>
-							<p>
-								↓ {sunsetHours}:{sunsetMinutes}
-							</p>
-						</Col>
-						<Col>
 							<p>{Math.floor(wind)}km/h</p>
 						</Col>
-						<Col>
+						<Col xs={4}>
+							<img src={Humidity} alt="humidity" className="sunrise" />
 							<p>{humidity}%</p>
 						</Col>
 					</Row>

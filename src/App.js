@@ -12,7 +12,7 @@ function App() {
 		<>
 			<Container id="weatherApp">
 				<SearchBar />
-				{latitude && longitude !== '' && <MainWeather />}
+				<MainWeather />
 				{latitude && longitude !== '' && <FutureConditions />}
 			</Container>
 		</>

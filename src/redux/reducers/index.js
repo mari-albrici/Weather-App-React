@@ -9,15 +9,9 @@ const initialState = {
 			temperature: '',
 			conditions: '',
 			wind: '',
-			sunrise: '',
-			sunset: '',
+			tempmax: '',
+			tempmin: '',
 			humidity: '',
-		},
-		forecast: {
-			date: '',
-			temperature: '',
-			conditions: '',
-			wind: '',
 		},
 	},
 };
@@ -90,25 +84,25 @@ const mainReducer = (state = initialState, action) => {
 					},
 				},
 			};
-		case 'SUNRISE':
+		case 'TEMP_MAX':
 			return {
 				...state,
 				meteo: {
 					...state.meteo,
 					weather: {
 						...state.meteo.weather,
-						sunrise: action.payload,
+						tempmax: action.payload,
 					},
 				},
 			};
-		case 'SUNSET':
+		case 'TEMP_MIN':
 			return {
 				...state,
 				meteo: {
 					...state.meteo,
 					weather: {
 						...state.meteo.weather,
-						sunset: action.payload,
+						tempmin: action.payload,
 					},
 				},
 			};
@@ -120,51 +114,6 @@ const mainReducer = (state = initialState, action) => {
 					weather: {
 						...state.meteo.weather,
 						humidity: action.payload,
-					},
-				},
-			};
-
-		case 'DATE':
-			return {
-				...state,
-				meteo: {
-					...state.meteo,
-					forecast: {
-						...state.meteo.forecast,
-						date: action.payload,
-					},
-				},
-			};
-		case 'FORECAST_TEMPERATURE':
-			return {
-				...state,
-				meteo: {
-					...state.meteo,
-					forecast: {
-						...state.meteo.forecast,
-						temperature: action.payload,
-					},
-				},
-			};
-		case 'FORECAST_CONDITIONS':
-			return {
-				...state,
-				meteo: {
-					...state.meteo,
-					forecast: {
-						...state.meteo.forecast,
-						conditions: action.payload,
-					},
-				},
-			};
-		case 'FORECAST_WIND':
-			return {
-				...state,
-				meteo: {
-					...state.meteo,
-					forecast: {
-						...state.meteo.weather,
-						wind: action.payload,
 					},
 				},
 			};

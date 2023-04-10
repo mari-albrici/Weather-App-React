@@ -47,8 +47,8 @@
 
 .mainOtherInfo {
   display: flex;
-  justify-content: space-evenly;
-  align-items: top;
+  justify-content: space-around ;
+  align-items: bottom;
   font-size: 0.8rem;
 }
 
@@ -84,14 +84,14 @@
 }
 
 .futureConditonsList {
- 
-  padding-inline: 3rem;
+ display: flex;
+ justify-content: space-evenly;
   border: 1px solid #8FA6CB;
   border-radius: 25px;
   background-color: #DDE3EA;
 }
 
 .weatherIconFuture {
-  color: black;
+  width: 50px;
 }
 

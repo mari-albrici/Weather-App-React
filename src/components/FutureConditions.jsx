@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Row, ListGroup } from 'react-bootstrap';
-import { MdDeviceThermostat, MdCloud, MdSunny, MdWaterDrop, MdSevereCold, MdThunderstorm, MdWindPower } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import Sun from '../assets/sun.png';
+import Cloud from '../assets/cloud.png';
+import Rain from '../assets/rain.png';
+import Snow from '../assets/snow.png';
+import Storm from '../assets/storm.png';
+import Sunrise from '../assets/sunrise.png';
+import Wind from '../assets/wind.png';
+import Humidity from '../assets/humidity.png';
 
 const FutureConditions = () => {
 	const latitude = useSelector((state) => state.meteo.location.latitude);
@@ -38,16 +45,51 @@ const FutureConditions = () => {
 							<ListGroup.Item key={day.dt}>
 								<Row className="futureConditonsList">
 									<Col>
-										<p>{day.dt_txt}</p>
+										{new Date(day.dt_txt).getDay() === 1 && (
+											<p>
+												Mon {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
+										{new Date(day.dt_txt).getDay() === 2 && (
+											<p>
+												Tue {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
+										{new Date(day.dt_txt).getDay() === 3 && (
+											<p>
+												Wed {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
+										{new Date(day.dt_txt).getDay() === 4 && (
+											<p>
+												Thur {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
+										{new Date(day.dt_txt).getDay() === 5 && (
+											<p>
+												Fri {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
+										{new Date(day.dt_txt).getDay() === 6 && (
+											<p>
+												Sat {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
+										{new Date(day.dt_txt).getDay() === 0 && (
+											<p>
+												Sun {new Date(day.dt_txt).getDate()}/{new Date(day.dt_txt).getMonth() + 1}
+											</p>
+										)}
 									</Col>
 									<Col>
-										<p>{day.weather[0].description}</p>
+										{day.weather[0].main === 'Clouds' && <img src={Cloud} alt="weather" className="weatherIconFuture" />}
+										{day.weather[0].main === 'Clear' && <img src={Sun} alt="weather" className="weatherIconFuture" />}
+										{day.weather[0].main === 'Rain' && <img src={Rain} alt="weather" className="weatherIconFuture" />}
+										{day.weather[0].main === 'Snow' && <img src={Snow} alt="weather" className="weatherIconFuture" />}
+										{day.weather[0].main === 'Thuderstorm' && <img src={Storm} alt="weather" className="weatherIconFuture" />}
 									</Col>
 									<Col>
-										<p>{day.weather[0].main.temp}°C</p>
-									</Col>
-									<Col>
-										<p>{day.weather[0].wind}km/h</p>
+										<p>{Math.floor(day.main.temp)}°C</p>
 									</Col>
 								</Row>
 							</ListGroup.Item>
